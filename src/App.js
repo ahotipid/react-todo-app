@@ -8,7 +8,7 @@ function App() {
   const [userInput, setUserInput] = useState('');
   const [toDos , setToDos] = useState([])
   const [status , setStatus] = useState('all')
-  const [filteredToDos, setFilteredToDos] = useState([...toDos])
+  const [filteredToDos, setFilteredToDos] = useState([])
 
   //function to filter toDos so it display depend on status
   const filterHandler = () => {
@@ -53,7 +53,7 @@ function App() {
     saveToLocal();
     //filter todos when there is change to toDos or status
     filterHandler();
-  } , [toDos, status])
+  } ,[toDos, status])
 
   return (
     <div className="App">

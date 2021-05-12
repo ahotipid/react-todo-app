@@ -6,14 +6,16 @@ const Form = ({userInput, setUserInput , toDos, setToDos, setStatus}) => {
     }
     const submitHandler = (e) => {
         e.preventDefault();
-        setToDos([
-            ...toDos,
-            {
-                text:userInput,
-                completed:false
-            }
-        ]);
-        setUserInput('');
+        if (userInput !== "") {
+            setToDos([
+                ...toDos,
+                {
+                    text:userInput,
+                    completed:false
+                }
+            ]);
+            setUserInput('');
+        }
     }
     const displayHandler = (e) => {
         setStatus(e.target.value);
@@ -27,10 +29,10 @@ const Form = ({userInput, setUserInput , toDos, setToDos, setStatus}) => {
                 onChange= {inputHandler}
                 id="addToDo"
                 type="text" 
-                className="todoInput"/>
+                className="todo-input"/>
             <button 
                 onClick= {submitHandler}
-                className="todoButton" type="submit">
+                className="todo-button" type="submit">
                 <i className="fas fa-plus-square"></i>
             </button>
             <label htmlFor="display">Display</label>
@@ -38,7 +40,7 @@ const Form = ({userInput, setUserInput , toDos, setToDos, setStatus}) => {
                 onChange ={displayHandler}
                 name="display" 
                 id="display" 
-                className="todoFilter">
+                className="todo-filter">
                 <option value="all">All</option>
                 <option value="completed">Completed</option>
                 <option value="uncompleted">Uncompleted</option>
